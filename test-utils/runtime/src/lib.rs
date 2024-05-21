@@ -286,8 +286,9 @@ impl sp_runtime::traits::SignedExtension for CheckSubstrateCall {
 	) -> TransactionValidity {
 		log::trace!(target: LOG_TARGET, "validate");
 		match call {
-			RuntimeCall::CordTest(ref cord_test_call) =>
-				cord_test_pallet::validate_runtime_call(cord_test_call),
+			RuntimeCall::CordTest(ref cord_test_call) => {
+				cord_test_pallet::validate_runtime_call(cord_test_call)
+			},
 			_ => Ok(Default::default()),
 		}
 	}
@@ -310,6 +311,7 @@ construct_runtime!(
 		Babe: pallet_babe,
 		CordTest: cord_test_pallet::pallet,
 		Balances: pallet_balances,
+		Nicks: pallet_nicks,
 	}
 );
 

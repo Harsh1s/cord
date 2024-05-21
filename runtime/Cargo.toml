@@ -57,6 +57,7 @@ pallet-node-authorization = { default-features = false, path = "../pallets/node-
 pallet-network-score = { default-features = false, path = '../pallets/network-score' }
 pallet-session-benchmarking = { default-features = false, path = '../pallets/session-benchmarking' }
 pallet-asset = { default-features = false, path = '../pallets/asset' }
+pallet-nicks = { version="28.0.0", default-features = false }
 
 # Internal runtime API (with default disabled)
 pallet-did-runtime-api = { package = "pallet-did-runtime-api", path = "./api/did", default-features = false }
@@ -182,6 +183,7 @@ std = [
 	"pallet-statement/std",
 	"pallet-network-score/std",
 	"pallet-asset/std",
+	"pallet-nicks/std",
 	"pallet-network-membership/std",
 	"pallet-runtime-upgrade/std",
 	"pallet-did-runtime-api/std",
