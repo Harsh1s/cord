@@ -36,8 +36,8 @@ use frame_support::{
 	genesis_builder_helper::{build_config, create_default_config},
 	parameter_types,
 	traits::{
-		fungible::HoldConsideration, ConstU32, Contains, EitherOfDiverse, KeyOwnerProofSystem,
-		LinearStoragePrice, PrivilegeCmp,
+		fungible::HoldConsideration, ConstU128, ConstU32, Contains, EitherOfDiverse,
+		KeyOwnerProofSystem, LinearStoragePrice, PrivilegeCmp,
 	},
 	weights::{
 		constants::{
@@ -810,28 +810,13 @@ impl pallet_asset::Config for Runtime {
 }
 
 impl pallet_nicks::Config for Runtime {
-// The Balances pallet implements the ReservableCurrency trait.
-// `Balances` is defined in `construct_runtime!` macro.
-type Currency = Balances;
-
-// Set ReservationFee to a value.
-type ReservationFee = ConstU128<100>;
-
-// No action is taken when deposits are forfeited.
-type Slashed = ();
-
-// Configure the FRAME System Root origin as the Nick pallet admin.
-// https://paritytech.github.io/substrate/master/frame_system/enum.RawOrigin.html#variant.Root
-type ForceOrigin = frame_system::EnsureRoot<AccountId>;
-
-// Set MinLength of nick name to a desired value.
-type MinLength = ConstU32<8>;
-
-// Set MaxLength of nick name to a desired value.
-type MaxLength = ConstU32<32>;
-
-// The ubiquitous event type.
-type RuntimeEvent = RuntimeEvent;
+	type Currency = Balances;
+	type ReservationFee = ConstU128<100>;
+	type Slashed = ();
+	type ForceOrigin = frame_system::EnsureRoot<AccountId>;
+	type MinLength = ConstU32<8>;
+	type MaxLength = ConstU32<32>;
+	type RuntimeEvent = RuntimeEvent;
 }
 
 #[frame_support::runtime]
